@@ -101,8 +101,11 @@ a{color:inherit}
 .card h3{margin:0 0 8px;font-size:22px;line-height:1.15;letter-spacing:-.01em;font-weight:600}
 .card p{margin:0 0 14px;color:var(--ink-soft);font-size:16px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
-.tags li{font-family:var(--mono);font-size:12px;padding:3px 9px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);transition:background .2s,color .2s}
-.card:hover .tags li{background:#fff;color:#1b1b1b;border-color:#fff}
+.tags li{font-family:var(--mono);font-size:12px;padding:4px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);cursor:default;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.tags li:hover{background:#fff;color:#1b1b1b;border-color:#fff;transform:translateY(-2px)}
+.notes{transition:background .3s,color .3s,border-color .3s}
+.notes:hover{background:#fff;color:#1b1b1b;border-color:#fff}
+.notes:hover em,.notes:hover h6{color:#555}
 .card .no{font-family:var(--mono);font-size:12px;color:var(--sun);display:block;margin-bottom:14px}
 
 /* work rows */
@@ -141,6 +144,9 @@ footer{padding:36px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(s
 a.u{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 a.u:hover{color:var(--sun)}
 
+.meta .stat-line{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;color:var(--ink-soft)}
+.meta .stat-line b{font-size:clamp(34px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--sun)}
+.meta .stat-line span{font-family:var(--mono);font-size:13px}
 /* about */
 .big.mid{font-size:clamp(40px,7vw,100px)}
 .prose{display:grid;gap:16px;max-width:42em;margin:0 0 36px;color:var(--ink-soft);font-size:clamp(17px,1.6vw,19px)}
@@ -438,13 +444,21 @@ a.u:hover{color:var(--sun)}
   /* ---------- data ---------- */
   var WA='https://wa.me/917717661385?text='+encodeURIComponent('Hi Vijay, I saw your portfolio and would like to talk about a Shopify project.');
   var PROJECTS=[
-    {n:'Burger Bae',i:'BB',u:'burgerbaeclothing.com',bg:'#c8102e'},
-    {n:'Urbanneeds',i:'UN',u:'urbanneeds.in',bg:'#d9480f'},
-    {n:'Bulachey',i:'BU',u:'bulachey.com',bg:'#a8135f'},
-    {n:'Hovni',i:'HV',u:'hovni.in',bg:'#b45309'},
-    {n:'Club York',i:'CY',u:'clubyork.co.in',bg:'#7b1fa2'},
-    {n:'Fullbleu',i:'FB',u:'fullbleuu.com',bg:'#0f766e'},
-    {n:'Babyzone',i:'BZ',u:'',bg:'#c8102e'}
+    {n:'Babyzone',i:'BZ',u:'',bg:'#d9480f',
+      d:'Managed the whole brand end to end: built the store on Shopify, connected WhatsApp API for WhatsApp marketing, set up tracking, ads and shipping, and ran the paid campaigns.',
+      s:['7+ ROAS','on Meta Ads within one month of launch'],
+      t:['Shopify build','WhatsApp API','Google Tag Manager','GA4','Google Ads','Meta Ads','Courier integration']},
+    {n:'Burger Bae',i:'BB',u:'burgerbaeclothing.com',bg:'#a8135f'},
+    {n:'Urbanneeds',i:'UN',u:'urbanneeds.in',bg:'#b45309',
+      d:'Handled ongoing website maintenance and ran the paid campaigns, achieving 5+ ROAS.',
+      s:['5+ ROAS','achieved through paid campaigns'],
+      t:['Website maintenance','Paid campaigns','Performance marketing']},
+    {n:'Hovni',i:'HV',u:'hovni.in',bg:'#7b1fa2'},
+    {n:'Bulachey',i:'BU',u:'bulachey.com',bg:'#0f766e'},
+    {n:'Club York',i:'CY',u:'clubyork.co.in',bg:'#c8102e',
+      d:'Fixed the whole website from scratch. Customized the theme with new sections, blocks and snippets, added an upsell feature in the cart, launched new products and fixed all listings with SEO.',
+      t:['Theme customization','New sections','New blocks','Snippets','Cart upsell','Product launches','Listing SEO']},
+    {n:'Fullbleu',i:'FB',u:'fullbleuu.com',bg:'#d9480f'}
   ];
   $$('a.wa,#wa-top').forEach(function(a){a.href=WA});
 
@@ -495,12 +509,12 @@ a.u:hover{color:var(--sun)}
 
   /* project sections */
   $('#proj-list').innerHTML=PROJECTS.map(function(p,k){
-    var tags='<ul class="tags"><li>Shopify</li><li>Theme work</li><li>Tracking</li></ul>';
+    var tags='<ul class="tags">'+(p.t||['Shopify','Theme work','Tracking']).map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
     var link=p.u?'<a class="pill" href="https://'+p.u+'" target="_blank" rel="noopener">Visit '+p.u+' ↗</a>':'<span class="eyebrow" style="margin:0">Store link on request</span>';
     return '<section class="sec sec-in" data-label="'+p.n+'" data-bg="'+p.bg+'"><div class="c proj">'+
       '<div class="meta"><p class="eyebrow"><b>'+String(k+1).padStart(2,'0')+'</b> / '+String(PROJECTS.length).padStart(2,'0')+'</p>'+
       '<h2 class="big" data-split>'+p.n+'</h2>'+
-      '<p>Shopify store built and maintained as an independent project.</p>'+tags+'<div class="row">'+link+'</div></div>'+
+      '<p>'+(p.d||'Shopify store built and maintained as an independent project.')+'</p>'+(p.s?'<p class="stat-line"><b>'+p.s[0]+'</b><span>'+p.s[1]+'</span></p>':'')+tags+'<div class="row">'+link+'</div></div>'+
       '<div class="shot" data-hub><b>'+p.i+'</b><small>'+(p.u||'shopify store')+'</small></div></div></section>';
   }).join('');
 
