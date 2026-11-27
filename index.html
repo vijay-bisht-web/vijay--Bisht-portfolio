@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vijay Bisht Portfolio</title>
-<meta name="description" content="Vijay Bisht - Shopify developer and performance marketer. Portfolio and projects.">
+<meta name="description" content="Vijay Bisht - Shopify developer and performance marketer. About, services, portfolio and projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -138,6 +138,42 @@ footer{padding:36px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(s
 a.u{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 a.u:hover{color:var(--sun)}
 
+/* about */
+.big.mid{font-size:clamp(40px,7vw,100px)}
+.prose{display:grid;gap:16px;max-width:42em;margin:0 0 36px;color:var(--ink-soft);font-size:clamp(17px,1.6vw,19px)}
+.prose p{margin:0}
+.stats{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.stat b{display:block;font-size:clamp(44px,5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff;margin-bottom:10px}
+.stat span{font-size:15px;color:var(--ink-soft)}
+.skills{grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
+.skill{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;padding:26px 22px}
+.skill .ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);margin-bottom:8px;color:var(--sun);transition:background .3s,color .3s,transform .4s}
+.skill:nth-child(even) .ic{color:#fff}
+.skill .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.skill:hover .ic{background:#fff;color:#1b1b1b;transform:rotate(-8deg) scale(1.08)}
+.skill h3{font-size:19px;margin:0}
+.skill p{font-size:15px;margin:0}
+
+/* services */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 38px;max-width:920px}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 10px;border:1px solid var(--line);border-radius:999px;background:var(--glass);text-decoration:none;font-size:16px;transition:background .25s,color .25s,transform .25s,border-color .25s}
+.chip i{font-style:normal;font-family:var(--mono);font-size:11px;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.18);transition:background .25s}
+.chip:hover{background:#fff;color:#1b1b1b;border-color:#fff;transform:translateY(-3px)}
+.chip:hover i{background:var(--sun)}
+.cta-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.cta-row small{font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
+.cta{display:inline-flex;align-items:center;gap:20px;padding:8px 8px 8px 30px;border-radius:999px;color:#1b1b1b;font-weight:700;font-size:clamp(17px,2vw,21px);text-decoration:none;background:linear-gradient(var(--sun),var(--sun)) no-repeat left center/0% 100%,#fff;transition:background-size .5s ease,transform .25s}
+.cta:hover{background-size:100% 100%;transform:translateY(-3px)}
+.cta i{font-style:normal;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#1b1b1b;color:#fff;font-size:22px;transition:transform .4s ease}
+.cta:hover i{transform:translateX(4px) rotate(-45deg)}
+.svc-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.svc{padding:28px 28px 32px;overflow:hidden}
+.svc .num{display:block;font-weight:800;font-size:72px;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.8);margin-bottom:18px;transition:color .4s}
+.svc:hover .num{color:#fff}
+.svc::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--sun);transition:width .5s ease}
+.svc:hover::after{width:100%}
+.svc p{margin:0}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .big.go .ch,.in{animation:none}
@@ -152,9 +188,11 @@ a.u:hover{color:var(--sun)}
 <header class="top">
   <a class="brand" href="#home">Vijay Bisht <span>Portfolio 2026</span></a>
   <nav>
-    <a href="#home" data-nav="home" class="cur">Home</a>
+    <a href="#home" data-nav="home" class="cur hide-sm">Home</a>
+    <a href="#about" data-nav="about">About</a>
+    <a href="#services" data-nav="services">Services</a>
     <a href="#projects" data-nav="projects">Projects</a>
-    <a class="pill" id="wa-top" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="pill hide-sm" id="wa-top" href="#" target="_blank" rel="noopener">WhatsApp</a>
   </nav>
 </header>
 
@@ -186,17 +224,15 @@ a.u:hover{color:var(--sun)}
     </div>
   </section>
 
-  <section class="sec sec-in" data-label="Skills" data-bg="#d9480f">
+  <section class="sec sec-in" data-label="Services" data-bg="#d9480f">
     <div class="c">
-      <p class="eyebrow"><b>/</b> What I do</p>
-      <h2 class="big" data-split>Skills</h2>
-      <div class="grid">
-        <article class="card" data-hub><span class="no">Build</span><h3>Theme development</h3><p>Custom sections and theme customization in Liquid, HTML, CSS and JavaScript.</p><ul class="tags"><li>Liquid</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></article>
-        <article class="card" data-hub><span class="no">Convert</span><h3>Checkout customization</h3><p>Checkout changes and CRO work that remove friction between cart and payment.</p><ul class="tags"><li>Checkout</li><li>CRO</li></ul></article>
-        <article class="card" data-hub><span class="no">Connect</span><h3>Integrations</h3><p>Payment gateways, WhatsApp API and courier integrations such as Delhivery.</p><ul class="tags"><li>Payment gateways</li><li>WhatsApp API</li><li>Delhivery</li></ul></article>
-        <article class="card" data-hub><span class="no">Measure</span><h3>Tracking and ads</h3><p>Pixel setup and funnel tracking so ad spend ties back to orders.</p><ul class="tags"><li>Meta Ads</li><li>Google Ads</li><li>GA4</li><li>Pixel</li></ul></article>
-        <article class="card" data-hub><span class="no">Operate</span><h3>Store operations</h3><p>COD remittance handling and reports that show what is shipping and what is paid.</p><ul class="tags"><li>COD remittance</li><li>Reports</li></ul></article>
-        <article class="card" data-hub><span class="no">Speed</span><h3>Performance</h3><p>Page speed and mobile experience tuned for D2C traffic.</p><ul class="tags"><li>Speed</li><li>Mobile</li></ul></article>
+      <p class="eyebrow"><b>/</b> What I offer</p>
+      <h2 class="big" data-split>Services</h2>
+      <p class="lead"><strong>End-to-end ecommerce execution.</strong> From building the storefront to acquiring and converting customers, I work across both the technical and growth sides of an ecommerce brand.</p>
+      <div class="chips" id="chips"></div>
+      <div class="cta-row">
+        <a class="cta" href="#services" data-hub><span>View all services</span><i>→</i></a>
+        <small>8 services · build + growth</small>
       </div>
     </div>
   </section>
@@ -247,6 +283,145 @@ a.u:hover{color:var(--sun)}
   </section>
   <div id="proj-list"></div>
 </div>
+<!-- ============ ABOUT ============ -->
+<div class="view" id="v-about" data-view="about">
+  <section class="sec first sec-in" data-label="About" data-bg="#c8102e">
+    <div class="c hero">
+      <div>
+        <p class="eyebrow in"><b>●</b> About me</p>
+        <h1 class="big" data-split>About me</h1>
+        <p class="lead in" style="animation-delay:.25s"><strong>I build ecommerce that performs.</strong> I'm Vijay Bisht, a Shopify Developer and Performance Marketing Specialist based in Ludhiana, India. I work across both the technical and growth sides of ecommerce, helping brands build better stores, acquire customers and improve conversions.</p>
+        <div class="row in" style="animation-delay:.4s">
+          <a class="pill" href="#projects" data-hub>Explore my work →</a>
+          <a class="pill ghost wa" href="#" target="_blank" rel="noopener" data-hub>Talk on WhatsApp</a>
+        </div>
+      </div>
+      <aside class="me in" style="animation-delay:.3s">
+        <div class="photo" data-hub><span>VB</span><img src="photo.jpg" alt="Vijay Bisht" onerror="this.remove()"></div>
+        <div class="notes"><h6>Vijay Bisht</h6><div><em>[1]</em><span>Shopify + Performance Marketing</span></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="Who I am" data-bg="#d9480f">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> Who I am</p>
+      <h2 class="big" data-split>Who I am</h2>
+      <p class="lead"><strong>Not just a developer. Not just a marketer.</strong></p>
+      <div class="prose">
+        <p>My work sits at the intersection of Shopify development and ecommerce growth. I can build the storefront, customize the theme, create custom functionality, integrate the tools a business needs and then work on the marketing that actually brings customers to that store.</p>
+        <p>That gives me a wider view of ecommerce. When I change a product page, checkout flow or landing page, I am not only thinking about how it looks. I am thinking about how the traffic behaves, where customers drop off and what can improve conversion.</p>
+        <p>Over the last 3+ years, I have worked with multiple ecommerce brands across Shopify development, Meta Ads, Google Ads, WhatsApp marketing, email marketing, tracking, CRO and ongoing optimization.</p>
+      </div>
+      <div class="svc-grid stats">
+        <article class="card stat" data-hub><b>₹50L+</b><span>Meta advertising spend managed</span></article>
+        <article class="card stat" data-hub><b>5–6x</b><span>Average ROAS across my ecommerce work</span></article>
+        <article class="card stat" data-hub><b>6+</b><span>Ecommerce brands worked with</span></article>
+        <article class="card stat" data-hub><b>3+</b><span>Years of hands-on ecommerce experience</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="How I work" data-bg="#a8135f">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> How I work</p>
+      <h2 class="big" data-split>Two sides</h2>
+      <p class="lead"><strong>One person. Two sides of ecommerce.</strong> I connect development decisions with marketing performance instead of treating them as separate jobs.</p>
+      <div class="svc-grid">
+        <article class="card" data-hub><span class="no">Development</span><h3>Building the storefront</h3><p>Shopify setup, Liquid, custom sections, snippets, theme customization, HTML, CSS, JavaScript, payment gateways, courier integrations and ecommerce apps.</p></article>
+        <article class="card" data-hub><span class="no">Growth</span><h3>Driving the traffic</h3><p>Meta Ads, Google Ads, prospecting, retargeting, campaign optimization, WhatsApp marketing and email marketing.</p></article>
+        <article class="card" data-hub><span class="no">Conversion</span><h3>Improving the customer journey</h3><p>CRO, funnel analysis, product page improvements, checkout optimization, tracking and solving drop-offs across the journey.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="Journey" data-bg="#b45309">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> Experience and education</p>
+      <h2 class="big" data-split>My journey</h2>
+      <div class="tl">
+        <article class="card" data-hub><span class="when">2025 – Present · Independent projects</span><h3>Shopify &amp; Performance Marketing</h3><p style="margin:0">Working independently across Shopify development, ecommerce optimization, integrations, paid campaigns and CRO for multiple consumer brands.</p></article>
+        <article class="card" data-hub><span class="when">2023 – 2025 · Bxb Social Private Limited</span><h3>Shopify &amp; Digital Marketing Specialist</h3><p style="margin:0">Built and optimized Shopify storefronts while managing Meta Ads, Google Ads, WhatsApp campaigns, email marketing, tracking and conversion improvements.</p></article>
+        <article class="card" data-hub><span class="when">2023 · Education</span><h3>Bachelor of Arts (B.A.)</h3><p style="margin:0">Completed my graduation in June 2023 while building practical experience in ecommerce, Shopify and digital marketing.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="Skills" data-bg="#0f766e">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> Skills and expertise</p>
+      <h2 class="big" data-split>Skills</h2>
+      <p class="lead"><strong>Ecommerce skills built through hands-on execution.</strong> A practical toolkit developed over 3+ years of working directly on Shopify stores, paid acquisition, tracking and conversion growth.</p>
+      <p class="eyebrow" style="margin-top:34px"><b>12+</b> Core ecommerce capabilities</p>
+      <div class="svc-grid skills" id="skills"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="The goal" data-bg="#7b1fa2">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> The goal</p>
+      <h2 class="big mid" data-split>Build better. Market smarter. Keep improving.</h2>
+      <p class="lead">I like working closely with ecommerce brands where I can understand the complete business instead of solving only one isolated task.</p>
+      <div class="row">
+        <a class="cta" href="#projects" data-hub><span>See my projects</span><i>→</i></a>
+        <a class="pill ghost" href="mailto:hbvv6115@gmail.com" data-hub>Email me</a>
+        <button class="copy" type="button" data-copy="hbvv6115@gmail.com" style="margin-left:0">Copy email</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<div class="view" id="v-services" data-view="services">
+  <section class="sec first sec-in" data-label="Overview" data-bg="#c8102e">
+    <div class="c">
+      <p class="eyebrow in"><b>●</b> What I offer</p>
+      <h1 class="big" data-split>Services</h1>
+      <p class="lead in" style="animation-delay:.25s"><strong>End-to-end ecommerce execution.</strong> From building the storefront to acquiring and converting customers, I can work across both the technical and growth sides of an ecommerce brand.</p>
+      <div class="row in" style="animation-delay:.4s">
+        <a class="pill wa" href="#" target="_blank" rel="noopener" data-hub>Discuss your project →</a>
+        <a class="pill ghost" href="#home" data-hub>← Back home</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="Build" data-bg="#d9480f">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> Store and technical work</p>
+      <h2 class="big" data-split>Build</h2>
+      <div class="svc-grid" id="svc-build"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="Grow" data-bg="#a8135f">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> Acquisition and conversion</p>
+      <h2 class="big" data-split>Grow</h2>
+      <div class="svc-grid" id="svc-grow"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="How I work" data-bg="#b45309">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> How I work</p>
+      <h2 class="big" data-split>My process</h2>
+      <p class="lead"><strong>Execution without unnecessary layers.</strong></p>
+      <div class="svc-grid" id="svc-steps"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-in" data-label="Contact" data-bg="#7b1fa2">
+    <div class="c">
+      <p class="eyebrow"><b>/</b> Start a project</p>
+      <h2 class="big" data-split>Let's work</h2>
+      <p class="lead">Tell me which service you need and share your store link. I reply on WhatsApp first.</p>
+      <div class="cta-row">
+        <a class="cta wa" href="#" target="_blank" rel="noopener" data-hub><span>Message on WhatsApp</span><i>→</i></a>
+        <a class="pill ghost" href="#projects" data-hub>See my projects</a>
+      </div>
+    </div>
+  </section>
+</div>
 </main>
 
 <footer>© 2026 Vijay Bisht · Shopify developer</footer>
@@ -269,6 +444,46 @@ a.u:hover{color:var(--sun)}
     {n:'Babyzone',i:'BZ',u:'',bg:'#c8102e'}
   ];
   $$('a.wa,#wa-top').forEach(function(a){a.href=WA});
+
+  var SERVICES=[
+    ['Shopify Store Development','Complete Shopify store creation from setup to launch, including structure, navigation, product pages, collection pages, mobile responsiveness and conversion-focused presentation.'],
+    ['Custom Shopify Development','Custom Shopify Liquid sections, snippets, HTML, CSS and JavaScript changes when standard theme functionality is not enough.'],
+    ['Theme Customization','Deep customization of existing Shopify themes including layout changes, product cards, banners, filters, menus, promotional sections and responsive design.'],
+    ['Payment & Courier Integrations','Setup and troubleshooting for payment gateways, COD workflows, prepaid payment options, courier platforms, checkout tools and operational ecommerce integrations.'],
+    ['Meta Ads','Campaign strategy, prospecting, retargeting, creative testing, budget optimization, scaling and performance analysis focused on ecommerce conversions.'],
+    ['Google Ads','Paid acquisition campaigns designed to capture high-intent customers and complement Meta advertising for ecommerce brands.'],
+    ['WhatsApp & Email Marketing','Retention and remarketing flows for abandoned carts, repeat purchases, promotional campaigns and customer engagement.'],
+    ['Conversion Rate Optimization','Analysis and improvement of landing pages, product pages, funnels, checkout journeys and customer experience to increase conversion rates.']
+  ];
+  var STEPS=[
+    ['Understand','I first understand the brand, product, customer and current bottleneck.'],
+    ['Build','I implement the development, marketing or tracking work required.'],
+    ['Measure','I look at real conversion and performance data instead of assumptions.'],
+    ['Optimize','I continuously improve the store and campaigns based on what the data shows.']
+  ];
+  function pad2(n){return (n<10?'0':'')+n}
+  function esc(t){return t.replace(/&/g,'&amp;')}
+  function svcCard(t,d,i){return '<article class="card svc" data-hub><span class="num">'+pad2(i)+'</span><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></article>'}
+  $('#chips').innerHTML=SERVICES.map(function(x,i){return '<a class="chip" href="#services" data-hub><i>'+pad2(i+1)+'</i>'+esc(x[0])+'</a>'}).join('');
+  $('#svc-build').innerHTML=SERVICES.slice(0,4).map(function(x,i){return svcCard(x[0],x[1],i+1)}).join('');
+  $('#svc-grow').innerHTML=SERVICES.slice(4).map(function(x,i){return svcCard(x[0],x[1],i+5)}).join('');
+  var SKILLS=[
+    ['Shopify Development','Complete store setup, storefront structure and ecommerce execution.','<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 016 0"/>'],
+    ['Shopify Liquid','Custom Liquid sections, snippets and dynamic theme functionality.','<path d="M9 8l-4 4 4 4M15 8l4 4-4 4M13 6l-2 12"/>'],
+    ['Theme Customization','Responsive layouts, product pages, collection pages and UI improvements.','<rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="M4 9h16"/>'],
+    ['HTML, CSS & JavaScript','Front-end customization, styling, interactions and custom functionality.','<path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>'],
+    ['Payment & Courier Integrations','Payment gateways, COD workflows, checkout tools and logistics integrations.','<path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 01-10 0V8zM12 16v5"/>'],
+    ['Meta Ads','Prospecting, retargeting, campaign optimization and ecommerce scaling.','<path d="M12 12c-2-3-4-4.5-6-4.5S2.5 9.5 2.5 12 4 16.5 6 16.5 10 15 12 12s4-4.5 6-4.5 3.5 2 3.5 4.5-1.5 4.5-3.5 4.5S14 15 12 12z"/>'],
+    ['Google Ads','Paid acquisition focused on high-intent ecommerce customers.','<path d="M4 10v4h3l7 4V6l-7 4H4zM18 9a4 4 0 010 6"/>'],
+    ['WhatsApp Marketing','Remarketing, promotions, abandoned-cart outreach and customer engagement.','<path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-3.6-.9L4 20z"/>'],
+    ['Email Marketing','Retention campaigns, repeat purchases and lifecycle communication.','<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/>'],
+    ['Conversion Rate Optimization','Product pages, funnels, checkout journeys and conversion-focused testing.','<path d="M5 20V10M10 20V4M15 20v-8M20 20V8"/>'],
+    ['Analytics & Tracking','Meta Pixel, conversion tracking, funnel data and performance analysis.','<path d="M4 4v16h16"/><path d="M8 15l4-4 3 3 5-6"/>'],
+    ['Ecommerce Strategy','Brand setup, customer journeys, growth planning and continuous optimization.','<path d="M6 21V4h10l-2 4 2 4H6"/>']
+  ];
+  $('#skills').innerHTML=SKILLS.map(function(x){return '<article class="card skill" data-hub><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">'+x[2]+'</svg></span><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p></article>'}).join('');
+  $('#svc-steps').innerHTML=STEPS.map(function(x,i){return svcCard(x[0],x[1],i+1)}).join('');
+
 
   /* work rows (home) */
   $('#rows').innerHTML=PROJECTS.filter(function(p){return p.u}).map(function(p){
@@ -317,7 +532,7 @@ a.u:hover{color:var(--sun)}
   }
   function route(){
     var h=(location.hash||'#home').slice(1);
-    view=h==='projects'?'projects':'home';
+    view=['projects','services','about'].indexOf(h)>-1?h:'home';
     $$('.view').forEach(function(v){v.classList.toggle('show',v.dataset.view===view)});
     $$('[data-nav]').forEach(function(a){a.classList.toggle('cur',a.dataset.nav===view)});
     window.scrollTo(0,0);
